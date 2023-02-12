@@ -17,6 +17,25 @@ public class Ball extends BaseObject{
      * f. add getters for all fields except the isFrozen.
      * g. add a constructor that initializes the x, y,
      *  speed and direction properties and set isFrozen to true.
+     *
+     * TASK 14:
+     * a. Implement the move method, x increase by dx and
+     *  y increases by dy. (if ball isFrozen, x and y
+     *  should not change.)
+     * b. Implement the draw(Canvas canvas).
+     *  call the setPoint(x, y, 'O') method.
+     * c. Implements the start method which thaws the ball.
+     *
+     * TASK 15:
+     * a. Implement the setDirection methods whic also
+     *  calculates dx, dy.
+     *  - dx = Math.cos(angle in rads) * speed
+     *  - dy = -Math.sin(angle in rads) * speed
+     *
+     * b. Implement the
+     *  void checkRebound(int minx, int maxx, int miny, int maxy)
+     *  method to determine when the ball hit the wall. And bounces
+     *  off if it does.
      */
 
     private double speed; //speed of the ball
@@ -37,11 +56,32 @@ public class Ball extends BaseObject{
 
     @Override
     void move() {
-
+        if(!isFrozen){
+            x += dx;
+            y += dy;
+        }
     }
 
     @Override
-    void draw(Canvas canvas) {
+    void draw(Canvas canvas) { canvas.setPoint(x, y, 'O'); }
+
+    public void start(){ isFrozen = false; }
+
+    //TASK 15a
+    public void setDirection(double direction) {
+        //Check that the direction ranges from 0-360 degrees
+        if(direction >= 0 && direction <= 360){
+            this.direction = direction;
+            //calculate the direction in radians
+            double rads = Math.toRadians(direction);
+            //calculate dx, dy with rads
+            this.dx = Math.cos(rads) * speed;
+            this.dy = -Math.sin(rads) * speed;
+        }
+    }
+
+    //TASK 15b
+    void checkRebound (int minx, int maxx, int miny, int maxy){
 
     }
 
