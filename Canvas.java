@@ -1,5 +1,3 @@
-import java.awt.*;
-
 /**
  * TASK 9
  * The Canvas class will define an instance on which
@@ -10,9 +8,9 @@ public class Canvas {
     private int width;
     private int height;
     // Add a matrix that will define the cell
-    // positions for each object drawwn on the
+    // positions for each object drawn on the
     // Canvas.
-    private char matrix[][];
+    private char [][]matrix;
 
     //defne the constructor
     public Canvas (int width, int height){
@@ -80,9 +78,9 @@ public class Canvas {
 
     public void print(){
         // prints the matrix
-        for (int i = 0; i < matrix.length; i++){
-            for (int j = 0; j < matrix[0].length; j++){
-                System.out.printf("%c\t", matrix[i][j]);
+        for (char[] row : matrix) {
+            for (char element : row) {
+                System.out.printf("%c\t", element);
             }
             System.out.println();
         }
