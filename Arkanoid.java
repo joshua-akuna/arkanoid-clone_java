@@ -78,6 +78,16 @@ public class Arkanoid {
 
     //TASK 5b: define an empty param move().
     public void move(){
+        //TASK 18a: calls the move() on each movable BaseObject
+        paddle.move();
+        bricks.forEach(brick -> brick.move());
+    }
 
+    public void draw (Canvas canvas){
+        //TASK 18b: calls the draw() on each implementation of
+        //drawable BaseObject
+        paddle.draw(canvas);
+        ball.draw(canvas);
+        bricks.forEach(brick -> brick.draw(canvas));
     }
 }
